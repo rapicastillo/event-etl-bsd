@@ -1,0 +1,9 @@
+APScheduler==3.3.1
+boto==2.42.0
+dj_database_url==0.4.2
+Django==1.11a1
+pytz==2016.6.1
+requests==2.10.0
+rq==0.7.1
+whitenoise==3.3.0
+redis==2.10.5
