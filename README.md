@@ -1,45 +1,19 @@
-# Events ETL (a map-for-change racket)
+# Events ETL: BSD
 
 Start of ETL for all events for progressive applications.
 
-
-# Setting up Local Heroku
-The following is based on the [Heroku Python Getting Started Guide](https://devcenter.heroku.com/articles/getting-started-with-python#run-the-app-locally)
-
-## Running Locally
-
-Make sure you have Python [installed properly](http://install.python-guide.org).  Also, install the [Heroku Toolbelt](https://toolbelt.heroku.com/) and [Postgres](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup).
-
-```sh
-
-$ pip install -r requirements.txt
-
-$ createdb python_getting_started
-
-$ python manage.py migrate
-$ python manage.py collectstatic
-
-$ heroku local
-```
-
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-## Deploying to Heroku
-
-```sh
-$ heroku create
-$ git push heroku master
-
-$ heroku run python manage.py migrate
-$ heroku open
-```
-or
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
 # Setting Up ETL
 
-# Environment Variables
+The following are steps to setup the ETL for BSD.
+
+### 1. Clone this and create a heroku instance from this.
+
+```
+$ heroku create <name>
+$ git push heroku master
+```
+
+### 2. Setting up the environment variables
 
 | key | description |
 |--- |--- |
@@ -48,3 +22,35 @@ or
 | `AWS_HOST` | AWS Host for S3 |
 | `S3_BUCKET` | Name of the bucket we're going to put the data in |
 | `CLOUDFRONT_ID` | Cloudfront instance dedicated to the S3 instance |
+| `BSD_ENDPOINT` | URL for the BSD search endpoint. Usually ends with `/page/event/search_results` |
+| `REMOTE_FILENAME` | Name of the file to be taken. |
+| `SUPERGROUP_NAME` | This is the name of the campaign. It's included in the json as `supergroup` |
+
+### 3. Setup Python RQ
+
+[`Source`](https://devcenter.heroku.com/articles/python-rq)
+
+Most of the work are already done in the etl. The only thing you need now is to setup redis. Run these in your setup
+
+```
+heroku addons:create redistogo
+heroku scale worker=1
+heroku scale clock=1
+```
+
+### 4. Monitor Logs
+
+You should be all set! You can monitor logs via:
+
+```
+heroku logs --tail
+```
+
+# File outputs
+
+If the AWS and cloudfront endpoints are properly setup, the following files will be available:
+
+* //`cloudfront_id`.cloudfront.net/output/`remote_filename`.js.gz
+* //`cloudfront_id`.cloudfront.net/raw/`remote_filename`.json
+
+You should be able to use these for your `event-map` application or any event interface.
