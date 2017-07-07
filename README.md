@@ -25,6 +25,7 @@ $ git push heroku master
 | `BSD_ENDPOINT` | URL for the BSD search endpoint. Usually ends with `/page/event/search_results` |
 | `REMOTE_FILENAME` | Name of the file to be taken. |
 | `SUPERGROUP_NAME` | This is the name of the campaign. It's included in the json as `supergroup` |
+| DISABLE_COLLECTSTATIC | Set this to **1** . This is for when we activate redis |
 
 ### 3. Setup Python RQ
 
