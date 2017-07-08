@@ -1,3 +1,5 @@
+
+
 # Events ETL: BSD
 
 Start of ETL for all events for progressive applications.
@@ -9,6 +11,8 @@ The following are steps to setup the ETL for BSD.
 ### 1. Clone this and create a heroku instance from this.
 
 ```
+$ git clone git@github.com:rapicastillo/event-etl-bsd.git
+$ cd event-etl-bsd
 $ heroku create <name>
 $ git push heroku master
 ```
