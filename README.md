@@ -44,8 +44,17 @@ heroku scale clock=1
 You should be all set! You can monitor logs via:
 
 ```
-heroku logs --tail
+$ heroku logs --tail
 ```
+
+### 5. (Optional) Test it!
+
+```
+$ heroku run python test.py
+```
+
+This should output the following:
+
 
 # File outputs
 
