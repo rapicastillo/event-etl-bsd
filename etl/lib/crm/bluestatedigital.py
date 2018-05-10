@@ -8,15 +8,15 @@ import etl.lib.base.scraper as scraper
 from pytz import timezone
 
 class EventsScraper(scraper.Scraper):
-    
+
     def __init__(self, url, supergroup = None, subgroup = None):
         self.url = url
         self.clean_data = None
         self.raw_data = None
-        
+
         self.supergroup = supergroup
         self.subgroup = subgroup
-    
+
     def run(self):
         """
         This orchestrates the various methods
@@ -32,14 +32,14 @@ class EventsScraper(scraper.Scraper):
         by getting the data out
         """
         # No Pagination
-        req = requests.get(self.url, params={'country': 'US','limit': 5000,'format': 'json'})
-        
+        req = requests.get(self.url, params={'country': 'US','state':'TX','limit': 5000,'format': 'json'})
+
         if req.status_code != 200:
             raise ValueError("Error in retrieving ", req.status_code)
         else:
             return json.loads(req.text)['results']
 
-            
+
     def clean(self, raw):
         """
         This will clean the information out that is
@@ -47,15 +47,15 @@ class EventsScraper(scraper.Scraper):
         """
         # Nothing to clean
         return raw
-        
+
     def translate(self, data):
         """
-        This prepares the data for a singular 
+        This prepares the data for a singular
         cleaned format
         """
         translated = []
         for item in data:
-            
+
             venue = ' '.join( filter(None, [ \
                       item['venue_name'],\
                       item['venue_addr1'],\
@@ -64,8 +64,8 @@ class EventsScraper(scraper.Scraper):
                       item['venue_zip'] \
                     ]))
 
-            
-            
+
+
             translated.append({
                 'supergroup': self.supergroup,
                 'group': self.subgroup,
@@ -79,10 +79,10 @@ class EventsScraper(scraper.Scraper):
                 'tz': item['timezone']
             })
         #endof for item in data:
-            
+
         return translated
-        
-        
+
+
     def osdify(self, data):
         """
         Translate the data to OSDI format
