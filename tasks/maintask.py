@@ -7,8 +7,6 @@ import os
 
 def run():
     print('RUN] Running Scheduled work')
-    #"https://secure.billdeblasio.com/page/event/search_results"
-    #"Bill de Blasio for NYC"
     name=os.environ.get('REMOTE_FILENAME')
     source_url = os.environ.get('BSD_ENDPOINT')
     scraper = bsd.EventsScraper(source_url, os.environ.get('SUPERGROUP_NAME'))
