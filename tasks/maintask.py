@@ -36,5 +36,5 @@ def run():
             'venue': row['venue']} for row in json_data['rows'] if row['isshown'].upper() == 'YES']
 
     exported_data = events_data + hq_data
-    # print(json.dumps(exported_data))
+    print(json.dumps(exported_data))
     export.Exporter.s3_export(exported_data, name)
