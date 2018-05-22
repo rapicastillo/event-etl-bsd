@@ -13,7 +13,6 @@ def run():
     scraper = bsd.EventsScraper(source_url, os.environ.get('SUPERGROUP_NAME'))
     scraper.run()
     events_data = scraper.get_data()
-    events_data = []
 
     # For headquarters
     json_data = []
