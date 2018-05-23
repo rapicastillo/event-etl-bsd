@@ -4,11 +4,55 @@ from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 
 import boto
+import boto.s3.connection
 import os
 import json
 import gzip
 
 class Exporter(object):
+
+    @staticmethod
+    def s3_simple_file_export(dataStr, bucketKey):
+        """
+        dataStr = "Is a string"
+        bucketKey = 'folder/subfolder/filename.ext'
+        """
+
+        aws_host = os.environ.get('AWS_HOST')
+        aws_bucket = os.environ.get('S3_BUCKET')
+        cloudfront_id = os.environ.get('CLOUDFRONT_ID')
+        aws_region = os.environ.get('AWS_REGION')
+        access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
+        secret_access_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
+
+        tempFile = "__" + bucketKey.split('/')[-1]
+
+        with open(tempFile, 'w') as f:
+            f.write(dataStr)
+
+        conn = boto.s3.connect_to_region(aws_region,
+            aws_access_key_id=access_key_id,
+            aws_secret_access_key=secret_access_key,
+            is_secure=True,               # uncomment if you are not using ssl
+            calling_format = boto.s3.connection.OrdinaryCallingFormat(),
+        )
+
+        bucket = conn.get_bucket(aws_bucket)
+        key = bucket.get_key(bucketKey)
+
+        if key is None:
+            print("Creating New Bucket")
+            key = bucket.new_key(bucketKey)
+
+        key.set_contents_from_filename(tempFile)
+        key.set_acl('public-read')
+
+        print("Refreshing Export")
+        cloudfront = boto.connect_cloudfront()
+        paths = [ bucketKey ]
+        inval_req = cloudfront.create_invalidation_request(cloudfront_id, paths)
+
+        os.remove(tempFile)
 
     @staticmethod
     def s3_export(data, name):
@@ -24,8 +68,16 @@ class Exporter(object):
         aws_host = os.environ.get('AWS_HOST')
         aws_bucket = os.environ.get('S3_BUCKET')
         cloudfront_id = os.environ.get('CLOUDFRONT_ID')
+        aws_region = os.environ.get('AWS_REGION')
+        access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
+        secret_access_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
-        conn = S3Connection(host=aws_host)
+        conn = boto.s3.connect_to_region(aws_region,
+            aws_access_key_id=access_key_id,
+            aws_secret_access_key=secret_access_key,
+            is_secure=True,               # uncomment if you are not using ssl
+            calling_format = boto.s3.connection.OrdinaryCallingFormat(),
+        )
 
         bucket = conn.get_bucket(aws_bucket)
 
