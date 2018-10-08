@@ -16,6 +16,7 @@ redis = "==2.10.5"
 APScheduler = "==3.3.1"
 Django = "==1.11a1"
 gunicorn = "*"
+python-dateutil = "*"
 
 [requires]
 python_version = "3.6"
