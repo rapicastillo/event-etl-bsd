@@ -1,0 +1,179 @@
+$purple: #36336c;
+#SKIN.bsd-event {
+  display: flex;
+  flex-direction: row-reverse;
+
+  & > .basic.container {
+    width: 700px;
+    background-color: white;
+    padding: 20px 20px;
+    margin-top: 50px;
+
+    .bsd-page-header {
+      overflow: visible !important;
+      .bsd-page-header-content {
+        display: flex;
+        justify-content: space-between;
+
+        h1 {
+          text-shadow: none;
+          font-size: 28px;
+          letter-spacing: 1px;
+          color: $purple;
+          margin-top: 0;
+        }
+        div#account_actions {
+          position: absolute;
+          right: -26px;
+          top: -78px;
+
+          span.delimiter {
+            display: none;
+          }
+
+          a {
+            color: white;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: bold;
+            font-family: sans-serif;
+            padding: 15px 20px;
+            margin: 0;
+            display: inline-block;
+            margin-right: -4px;
+
+            &:nth-child(1) {
+              background-color: #91b2f8;
+              &:hover {
+                color: #6190f5;
+                background: #bbd2ff;
+              }
+            }
+
+
+            &:nth-child(3) {
+              background-color: #52bda5;
+              &:hover {
+                color: #3d9f89;
+                background-color: #77cbb8;
+              }
+            }
+
+            &:nth-child(5) {
+              background-color: #fb785e;
+              &:hover {
+                color: #fa4e2c;
+                background-color: #fca290;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .bsd-page-content {
+      .ui-widget-header h2 {
+        font-size: 24px;
+        color: $purple;
+        margin-top: 35px;
+        text-align: left;
+        text-shadow: none;
+        margin-bottom: 5px;
+      }
+
+      .bsd-widget-inner-content {
+        form {
+          div.table_container {
+            border: 1px solid lightgray;
+            border-radius: 10px 10px 0 0;
+            padding: 20px;
+            background-color: whitesmoke;
+            table.firstform {
+              width: 100%;
+
+              tr#event_zip_row, tr#bsd-event-type-row {
+                th {
+                  text-align: left;
+                  font-size: 18px;
+                  font-weight: normal;
+                  font-family: sans-serif;
+                  padding-bottom: 22px;
+                }
+                td { vertical-align: top; }
+              }
+
+              select[name='event_type_id'] {
+                background-color: #36336b75;
+                color: white;
+                font-size: 18px;
+                font-family: sans-serif;
+                padding: 7px;
+                font-weight: bold;
+
+
+              }
+
+              tr#bsd-event-type-row {
+                  td {
+                    position: relative;
+                    &:after {
+                      content: '\0025BC';
+                      color: white;
+                      position: absolute;
+                      right: 8px;
+                      top: 12px;
+                      font-size: 10px;
+                    }
+                  }
+              }
+
+              td.button {
+                padding-top: 10px;
+
+                input[type='submit'] {
+                  border-radius: 20px !important;
+                  border: 2px solid !important;
+                  height: 44px;
+                  background-color: transparent;
+                  font-family: sans-serif;
+                  font-weight: bold;
+
+                  &:hover {
+                    background-color: $purple;
+                    color: white;
+                  }
+                }
+              }
+            }
+
+            table.typedesc {
+              margin-top: 40px;
+
+              tr th.typedescheader {
+                padding-top: 20px;
+                border-top: 1px solid;
+                text-align: left;
+                padding-bottom: 20px;
+                font-family: sans-serif;
+                font-size: 20px;
+              }
+
+              tbody {
+                tr td, tr th {
+                  vertical-align: top;
+                  padding-bottom: 20px;
+                }
+                tr th {
+                  text-align: left;
+                  font-family: sans-serif;
+                  padding-right: 20px;
+                }
+              }
+
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -7,4 +7,5 @@
 
 from tasks import maintask
 
+print("Test")
 maintask.run()

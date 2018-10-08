@@ -1,0 +1,76 @@
+@mixin event-item {
+  div.event-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 0 5px 5px 0;
+    color: $darkblue;
+    border-left: 10px solid $lightblue;
+    margin-top: 10px;
+
+    h5.time-info {
+      color: $darkgray;
+      font-size: 14px;
+    }
+
+    h3 {
+      font-size: 24px;
+      font-weight: 800;
+      padding: 10px 0 5px;
+      a {
+        color: $hoverblue;
+      }
+    }
+    h5.event-type {
+      text-transform: uppercase;
+      letter-spacing: 0.5pt;
+      color: gray;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    a.rsvp-link {
+      border-radius: 20px;
+      padding: 10px 20px;
+      background-color: $blue;
+      color: white;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.4pt;
+      margin-top: 10px;
+      display: inline-block;
+      transition: background-color 0.4s, color 0.4s;
+      &:hover {
+        text-decoration: none;
+        background-color: $lightblue;
+        color: $hoverblue;
+      }
+    }
+  }
+}
+
+ul#event-list {
+  & > li {
+    @include event-item;
+  }
+}
+
+div.popup-list-container ul.popup-list li {
+  @include event-item;
+
+  div.event-item {
+    font-family: Muli, sans-serif;
+    padding: 0;
+    border-left: 0;
+
+    h3 {
+      font-size: 18px;
+      line-height: 22px;
+    }
+    h5 { margin-bottom: 5px; }
+    p {
+      font-size: 14px;
+      margin-top:5px;
+      margin-bottom:5px;
+    }
+  }
+}

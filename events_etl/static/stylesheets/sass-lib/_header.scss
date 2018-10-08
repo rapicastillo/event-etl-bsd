@@ -1,0 +1,49 @@
+section#header {
+  div#header {
+    display: flex;
+    flex-direction: row;
+
+    div.main-title-area {
+      flex-grow: 1;
+
+      div#spiel {
+        background-image: url(../img/bg-logo.png);
+        width: 174px;
+        height: 100px;
+        background-size: cover;
+      }
+    }
+
+    nav ul#nav {
+      margin-top: 20px;
+
+      li {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 15px;
+
+        div.fb-share-button {
+          margin-top: 12px;
+        }
+        iframe#twitter-widget-0 {
+          margin-top: 12px
+        }
+        a.contribute {
+          border-radius: 40px;
+          padding: 15px 40px;
+          text-align: center;
+          background-color: $red;
+          color: white;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.4pt;
+          display: inline-block;
+          transition: background-color .4s;
+          &:hover {
+            background-color: $blue;
+          }
+        }
+      }
+    }
+  }
+}

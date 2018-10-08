@@ -32,7 +32,7 @@ class EventsScraper(scraper.Scraper):
         by getting the data out
         """
         # No Pagination
-        req = requests.get(self.url, params={'country': 'US','state':'TX','limit': 5000,'format': 'json'})
+        req = requests.get(self.url, params={'country': 'US','state':'GA','limit': 5000,'format': 'json'})
 
         if req.status_code != 200:
             raise ValueError("Error in retrieving ", req.status_code)
@@ -64,18 +64,23 @@ class EventsScraper(scraper.Scraper):
                       item['venue_zip'] \
                     ]))
 
-
-
             translated.append({
                 'supergroup': self.supergroup,
                 'group': self.subgroup,
+                'id': item['id'],
                 'event_type': item['event_type_name'],
                 'title': item['name'],
                 'url': item['url'],
-                'venue': venue,
+                'venue': item['venue_name'],
+                'address': item['venue_addr1'],
+                'city': item['venue_city'],
+                'state': item['venue_state_cd'],
+                'zipcode': item['venue_zip'],
                 'lat': item['latitude'],
                 'lng': item['longitude'],
                 'start_time': item['start_dt'],
+                'event_date': item['start_day'],
+                'event_time': item['start_time'],
                 'tz': item['timezone']
             })
         #endof for item in data:

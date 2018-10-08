@@ -1,0 +1,179 @@
+#loading-icon {
+  color: $darkblue;
+}
+
+nav#mobile-nav {
+  display: none;
+}
+
+section#activity-area {
+  article#events {
+    background-color: $darkblue;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    h3#switch-link { display: none; }
+
+    div#filters {
+      overflow: visible;
+      max-height: 3000px;
+      position: relative;
+      transition: max-height 0.4s;
+      padding-top: 0;
+      padding-bottom: 0;
+
+      h4 {
+        font-size: 32px;
+        font-weight: 900;
+        letter-spacing: 0.8pt;
+        margin-bottom: 20px;
+        position: relative;
+        cursor: pointer;
+
+        &::after {
+          content: 'HIDE EVENT TYPES';
+          position: absolute;
+          font-weight: 800;
+          color: $hoverblue;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 12px;
+        }
+      }
+
+      &.hidden {
+        max-height: 180px;
+        height: 100%;
+        overflow: hidden;
+        h4::after {
+          content: 'FILTER BY EVENT TYPE';
+        }
+      }
+    }
+
+    div#event-list-container {
+      flex-grow: 1;
+      overflow: auto;
+      padding: 40px;
+      padding-top: 0px;
+
+
+      display: flex;
+      flex-direction: column;
+
+      ul#event-list {
+        flex-grow: 1;
+        border-top: 1px solid white;
+        padding-top: 30px;
+      }
+    }
+
+    div#filters {
+      padding: 40px;
+      padding-bottom: 20px;
+    }
+    form#filter-form {
+      td {
+        padding-right: 10px;
+      }
+      h5 {
+        font-size: 14px;
+        letter-spacing: 1.5pt;
+        text-transform: uppercase;
+      }
+
+      input[name="zipcode"] {
+        border: 0;
+        border-radius: 10px;
+        padding: 10px;
+        width: 120px;
+        font-size: 24px;
+        letter-spacing: 3px;
+        text-align: center ;
+        margin-top: 10px;
+        font-weight: 800;
+
+        &::placeholder {
+          letter-spacing: 0px;
+          color: lightgray;
+          font-weight: 200;
+          font-size: 20px;
+        }
+      }
+
+
+      /*distance*/
+      select[name='distance'], select[name='sort'] {
+        & + .btn-group {
+          margin-top: 10px;
+          button {
+            border-radius: 10px;
+            span { font-size: 23px; }
+          }
+        }
+      }
+    }
+
+    div#filter-popup-area {
+        .filter-button { display: none; }
+
+      div#filter-list-area {
+        padding-top: 20px;
+        div#f-container {
+          margin-top: 10px;
+          border-radius: 5px;
+          padding: 20px;
+          background-color: white;
+          color: $darkblue;
+
+          ul#filter-list {
+            column-count: 2;
+            padding-bottom: 2px;
+            li {
+              margin-bottom: 7px;
+              input[type='checkbox'] {
+                visibility: hidden;
+                position: absolute;
+                left: -9999px;
+                top: -9999px;
+
+                & + label {
+                  span.filter-on { display: none; }
+                  span.filter-off { display: inline-block; }
+                }
+                &:checked + label {
+                  span.filter-on { display: inline-block; }
+                  span.filter-off { display: none; }
+                }
+              }
+
+              label {
+                span.filter-on, span.filter-off {
+                  height: 20px;
+                  width: 20px;
+                  border-radius: 20px;
+                  border-color: white;
+                  border-width: 3px;
+                  border-style: solid;
+                  background-color: $red;
+                  box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
+                  margin-right: 4px;
+                  margin-bottom: 5px;
+                }
+                span.filter-off {
+
+                  background-color: whitesmoke;
+                }
+
+                * { vertical-align: middle; }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

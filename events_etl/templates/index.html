@@ -1,58 +1,245 @@
-{% extends "base.html" %}
 {% load staticfiles %}
+{% load jsonify %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stacey Abrams for Governor</title>
 
-{% block content %}
+  <meta charset="utf-8" />
+  <meta name='google-site-verification' content='' />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="Stacey Abrams for Governor">
+  <meta name="keywords" content="Stacey Abrams for Governor">
+  <meta property="og:image" content="https://map.staceyabrams.com/img/social.jpg" />
+  <meta property="og:url" content="https://map.staceyabrams.com" />
+  <meta property="og:title" content="Join a Stacey Abrams Campaign Event"/>
+  <meta property="og:description" content="Join Stacey's grassroots campaign"/>
+  <link rel="stylesheet" href="https://use.typekit.net/qcr6jin.css">
+  <link rel="canonical" href="https://map.staceyabrams.com">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:site" content="https://map.staceyabrams.com">
+  <meta property="twitter:site:id" content="465046121">
+  <meta property="twitter:author" content="staceyabrams">
+  <meta property="twitter:description" content="Join a Stacey Abrams Campaign Event">
+  <meta property="twitter:title" content="Join a Stacey Abrams Campaign Event">
+  <meta property="twitter:image" content="https://map.staceyabrams.com/img/social.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-<div class="jumbotron text-center">
-  <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="{% static 'lang-logo.png'%}">
-    </a>
-    <h1>Getting Started with Python on Heroku</h1>
-    <p>This is a sample Python application deployed to Heroku. It's a reasonably simple app - but a good foundation for understanding how to get the most out of the Heroku platform.</p>
-    <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-python"><span class="glyphicon glyphicon-flash"></span> Getting Started with Python</a>
-    <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/python-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
-  </div>
-</div>
-<div class="container">
-  <div class="alert alert-info text-center" role="alert">
-    To deploy your own copy, and learn the fundamentals of the Heroku platform, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-python" class="alert-link">Getting Started with Python on Heroku</a> tutorial.
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> How this sample app works</h3>
-      <ul>
-        <li>This app was deployed to Heroku, either using Git or by using <a href="https://github.com/heroku/python-getting-started">Heroku Button</a> on the repository.</li>
+  <!-- inject:css -->
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static '/stylesheets/vendor/font-awesome/css/font-awesome.css' %}">
+  <link rel="stylesheet" href="{% static '/stylesheets/vendor/font-awesome/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static '/stylesheets/vendor/leaflet/leaflet.css' %}">
+  <link rel="stylesheet" href="{% static '/stylesheets/vendor/bootstrap-multiselect.css' %}">
 
-        <li>When Heroku received the source code, it fetched all the dependencies in the <a href="https://github.com/heroku/python-getting-started/blob/master/requirements.txt">requirements.txt file</a>, creating a deployable slug.</li>
-        <li>The platform then spins up a dyno, a lightweight container that provides an isolated environment in which the slug can be mounted and executed.</li>
-        <li>You can scale your app, manage it, and deploy over <a href="https://addons.heroku.com/">150 add-on services</a>, from the Dashboard or CLI.</li>
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-link"></span> Next Steps</h3>
-      <ul>
-        <li>If you are following the <a href="https://devcenter.heroku.com/articles/getting-started-with-python">Getting Started</a> guide, then please head back to the tutorial and follow the next steps!</li>
-        <li>If you deployed this app by deploying the Heroku Button, then in a command line shell, run:</li>
-        <ul>
-          <li><code>git clone https://github.com/heroku/python-getting-started.git</code> - this will create a local copy of the source code for the app</li>
-          <li><code>cd python-getting-started</code> - change directory into the local source code repository</li>
-          <li><code>heroku git:remote -a &lt;your-app-name></code> - associate the Heroku app with the repository</li>
-          <li>You'll now be set up to run the app locally, or <a href="https://devcenter.heroku.com/articles/getting-started-with-python#push-local-changes">deploy changes</a> to Heroku</li>
-        </ul>
-      </ul>
-      <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
-      <ul>
-        <li><a href="https://www.heroku.com/home">Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/">Heroku Dev Center</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/getting-started-with-python">Getting Started with Python on Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/django-app-configuration">Configuring Django Apps for Heroku</a></li>
-      </ul>
-    </div>
-  </div> <!-- row -->
-   <div class="alert alert-info text-center" role="alert">
-    Please do work through the Getting Started guide, even if you do know how to build such an application.  The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
-  </div>
-</div>
-{% endblock %}
+  <link rel="stylesheet" href="{% static '/stylesheets/styles.css' %}">
+  <!-- endinject -->
+</head>
+
+<!--[if lte IE 9]>
+       <!-- meta http-equiv="refresh" content="0; url=https://secure.staceyabrams.com/host_an_event" / -->
+<![endif]-->
+<body class='list-view initial-view'>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1682756452019911";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <section id='viewport'>
+    <section id='header'>
+      <div id="header" class='primary_font'>
+
+        <div class="main-title-area">
+          <div style="margin-bottom: 4px;">
+            <div id='spiel'>
+              <a style="display: inline-block; width: 100%; height: 100%" href='//staceyabrams.com'></a>
+            </div>
+          </div>
+        </div>
+
+
+        <nav>
+          <ul id="nav" class='nav'>
+            <li>
+              <a class="twitter-share-button"
+                data-url="#"
+                url="#"
+                href="https://twitter.com/intent/tweet?text=I%20just%20signed%20up%20to%20attend%20a%20%23Stacey%20Abrams%20event%3A%20map.staceyabrams.com%20%23staceyabrams">
+                Tweet</a>
+            </li>
+            <li>
+              <div class="fb-share-button" data-href="http://map.staceyabrams.com" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://map.staceyabrams.com&amp;src=sdkpreparse">Share</a></div>
+            </li>
+            <!-- li><a href="https://secure.staceyabrams.com/page/event/create" class="contribute" target="_blank">Host an Event</a></li -->
+          </ul>
+        </nav>
+        <div style="clear: both"></div>
+      </div>
+    </section>
+    <section id='activity-area' class='clearfix'>
+      <article id='events' >
+        <div id='filters' class='hidden'>
+          <h3 id='switch-link'>
+              <a href='javascript: void(null)' onclick='window.mapManager.toMapView()' id='to-map-view'>
+                <span>List View</span>
+                <img src='{% static '/img/icon/list-icon.png' %}' width='28px'/>
+              </a>
+              <a href='javascript: void(null)' onclick='window.mapManager.toListView()' id='to-list-view'>
+                <span>Map View</span>
+                <img src='{% static '/img/icon/map-icon.png' %}' width='28px'/>
+              </a>
+          </h3>
+          <h4 class='primary_font title'>
+            <span id='screen-title'>Filters</span>
+            <a href="//staceyabrams.com"><span id='mobile-title'></span></a>
+          </h4>
+          <form id='filter-form'>
+            <table>
+              <tr>
+                <td>
+                  <h5 class='primary_font'>By Zipcode</h5>
+                  <input type='number' name='zipcode' maxlength='5' placeholder='ZIPCODE' onclick="this.select();" >
+                </td>
+                <td>
+                  <h5 class='primary_font'>Distance</h5>
+                  <select name='distance'>
+                    <option value='5'>5mi</option>
+                    <option value='20'>20mi</option>
+                    <option value='50' selected='selected'>50mi</option>
+                    <option value='100'>100mi</option>
+                  </select>
+                </td>
+                <td>
+                  <h5 class='primary_font'>Sort By</h5>
+                  <select name='sort'>
+                    <option value='time' selected='selected'>Time</option>
+                    <option value='distance'>Distance</option>
+                  </select>
+                  <input type='button' style='position: absolute; z-index: -1; opacity: 0;' id='hidden-button'/>
+                </td>
+              </tr>
+            </table>
+            <div id='filter-popup-area' class='primary_font'>
+              <a href='javascript: void(null)' class='filter-button show-filter' onclick='$("#events").addClass("show-type-filter");'>
+                Search by Type
+              </a>
+              <div id='filter-list-area'>
+                <h5>Search by Type</h5>
+                <div id='f-container'>
+                  <div id='loading-icon' class='primary_font'>Loading...</div>
+                  <div id='filter-list-container'>
+                    <ul id='filter-list'></ul>
+                  </div>
+                  <div class='show-hide-all' style='text-align: center; font-size: 11px; margin-top: 10px; color: lightgray;'>
+                  <a href='javascript: void(null)' id='event-show-all'>Show All</a>
+
+                  &bull;
+                    <a href='javascript: void(null)'
+                      onclick='$("#filter-list").find("input[type=checkbox]").prop("checked", false).trigger("change")'>Hide All</a>
+
+                  </div>
+                </div>
+                <p align='right'>
+                  <a href='javascript: void(null)' class='filter-button'
+                     onclick='$("#events").removeClass("show-type-filter");'>
+                    Hide Legend
+                  </a>
+                </p>
+              </div>
+            </div>
+            <nav id='mobile-nav'>
+              <a href="https://secure.staceyabrams.com/page/event/create" class="contribute" target="_blank"><img src='https://d80vmbqb0w49q.cloudfront.net/img/icon/add-icon.png' width='28px'/></a>
+            </nav>
+          </form>
+        </div>
+        <div id='event-list-container'>
+
+          <ul id='event-list'></ul>
+          <footer>
+            <div id='footer-area' >
+              <h3 class='secondary_font'>
+                Stacey Abrams for Governor
+              </h3>
+              <p class='secondary_font'>
+                  1270 Caroline Street Suite D120-447<br/>
+                  Atlanta, GA 30307<br/>
+              </p>
+              <br/><br/>
+              <sub><a href='https://staceyabrams.com/privacy-policy/'>Privacy Policy</a></sub>
+            </div>
+
+            <p class="paidfor">Paid for by Stacey Abrams for Governor</p>
+
+          </footer>
+        </div>
+
+      </article>
+      <article id='map'>
+        <div id='map-container'></div>
+      </article>
+    </section>
+  </section><!-- endof viewport -->
+  <!-- inject:js -->
+
+  <script type='text/javascript'>
+    window.all_events_data={{events | json}};
+  </script>
+  <script src="{% static '/javascript/vendor/jquery.min.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+  <script src="{% static '/javascript/vendor/leaflet.min.js' %}"></script>
+  <script src="{% static '/javascript/vendor/d3.min.js' %}"></script>
+  <script src="{% static '/javascript/vendor/deparam.min.js' %}"></script>
+  <script src="{% static '/javascript/vendor/moment.min.js' %}"></script>
+  <script src="{% static '/javascript/bundle.js' %}"></script>
+  <script src="{% static '/javascript/vendor/pip.js' %}"></script>
+  <script src="{% static '/javascript/vendor/bootstrap-multiselect.js' %}"></script>
+  <!-- endinject -->
+  <script type='text/javascript'>
+    $(function() {
+      $("select[name='distance'],select[name='sort']").multiselect();
+
+      $("div#filters > h4").on('click', function() {
+        $("div#filters").toggleClass("hidden");
+      });
+    });
+  </script>
+
+<!-- SOCIAL -->
+<!-- Twitter -->
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+
+<!-- SOCIAL -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-18936430-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

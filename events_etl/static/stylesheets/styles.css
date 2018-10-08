@@ -1,0 +1,335 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a {
+  text-decoration: none; }
+
+body, html {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Muli', sans-serif; }
+
+section#viewport {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; }
+  section#viewport section#header {
+    height: 100px; }
+  section#viewport section#activity-area {
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    flex-direction: row-reverse; }
+    section#viewport section#activity-area article#map {
+      flex-grow: 1;
+      height: 100%; }
+      section#viewport section#activity-area article#map div#map-container {
+        height: 100%;
+        width: 100%; }
+    section#viewport section#activity-area article#events {
+      width: 430px; }
+
+section#header div#header {
+  display: flex;
+  flex-direction: row; }
+  section#header div#header div.main-title-area {
+    flex-grow: 1; }
+    section#header div#header div.main-title-area div#spiel {
+      background-image: url(../img/bg-logo.png);
+      width: 174px;
+      height: 100px;
+      background-size: cover; }
+  section#header div#header nav ul#nav {
+    margin-top: 20px; }
+    section#header div#header nav ul#nav li {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 15px; }
+      section#header div#header nav ul#nav li div.fb-share-button {
+        margin-top: 12px; }
+      section#header div#header nav ul#nav li iframe#twitter-widget-0 {
+        margin-top: 12px; }
+      section#header div#header nav ul#nav li a.contribute {
+        border-radius: 40px;
+        padding: 15px 40px;
+        text-align: center;
+        background-color: #fb785e;
+        color: white;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.4pt;
+        display: inline-block;
+        transition: background-color .4s; }
+        section#header div#header nav ul#nav li a.contribute:hover {
+          background-color: #91b2f8; }
+
+#loading-icon {
+  color: #36336b; }
+
+nav#mobile-nav {
+  display: none; }
+
+section#activity-area article#events {
+  background-color: #36336b;
+  color: white;
+  display: flex;
+  flex-direction: column; }
+  section#activity-area article#events h3#switch-link {
+    display: none; }
+  section#activity-area article#events div#filters {
+    overflow: visible;
+    max-height: 3000px;
+    position: relative;
+    transition: max-height 0.4s;
+    padding-top: 0;
+    padding-bottom: 0; }
+    section#activity-area article#events div#filters h4 {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 0.8pt;
+      margin-bottom: 20px;
+      position: relative;
+      cursor: pointer; }
+      section#activity-area article#events div#filters h4::after {
+        content: 'HIDE EVENT TYPES';
+        position: absolute;
+        font-weight: 800;
+        color: #6190f5;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px; }
+    section#activity-area article#events div#filters.hidden {
+      max-height: 180px;
+      height: 100%;
+      overflow: hidden; }
+      section#activity-area article#events div#filters.hidden h4::after {
+        content: 'FILTER BY EVENT TYPE'; }
+  section#activity-area article#events div#event-list-container {
+    flex-grow: 1;
+    overflow: auto;
+    padding: 40px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column; }
+    section#activity-area article#events div#event-list-container ul#event-list {
+      flex-grow: 1;
+      border-top: 1px solid white;
+      padding-top: 30px; }
+  section#activity-area article#events div#filters {
+    padding: 40px;
+    padding-bottom: 20px; }
+  section#activity-area article#events form#filter-form {
+    /*distance*/ }
+    section#activity-area article#events form#filter-form td {
+      padding-right: 10px; }
+    section#activity-area article#events form#filter-form h5 {
+      font-size: 14px;
+      letter-spacing: 1.5pt;
+      text-transform: uppercase; }
+    section#activity-area article#events form#filter-form input[name="zipcode"] {
+      border: 0;
+      border-radius: 10px;
+      padding: 10px;
+      width: 120px;
+      font-size: 24px;
+      letter-spacing: 3px;
+      text-align: center;
+      margin-top: 10px;
+      font-weight: 800; }
+      section#activity-area article#events form#filter-form input[name="zipcode"]::placeholder {
+        letter-spacing: 0px;
+        color: lightgray;
+        font-weight: 200;
+        font-size: 20px; }
+    section#activity-area article#events form#filter-form select[name='distance'] + .btn-group, section#activity-area article#events form#filter-form select[name='sort'] + .btn-group {
+      margin-top: 10px; }
+      section#activity-area article#events form#filter-form select[name='distance'] + .btn-group button, section#activity-area article#events form#filter-form select[name='sort'] + .btn-group button {
+        border-radius: 10px; }
+        section#activity-area article#events form#filter-form select[name='distance'] + .btn-group button span, section#activity-area article#events form#filter-form select[name='sort'] + .btn-group button span {
+          font-size: 23px; }
+  section#activity-area article#events div#filter-popup-area .filter-button {
+    display: none; }
+  section#activity-area article#events div#filter-popup-area div#filter-list-area {
+    padding-top: 20px; }
+    section#activity-area article#events div#filter-popup-area div#filter-list-area div#f-container {
+      margin-top: 10px;
+      border-radius: 5px;
+      padding: 20px;
+      background-color: white;
+      color: #36336b; }
+      section#activity-area article#events div#filter-popup-area div#filter-list-area div#f-container ul#filter-list {
+        column-count: 2;
+        padding-bottom: 2px; }
+        section#activity-area article#events div#filter-popup-area div#filter-list-area div#f-container ul#filter-list li {
+          margin-bottom: 7px; }
+          section#activity-area article#events div#filter-popup-area div#filter-list-area div#f-container ul#filter-list li input[type='checkbox'] {
+            visibility: hidden;
+            position: absolute;
+            left: -9999px;
+            top: -9999px; }
+            section#activity-area article#events div#filter-popup-area div#filter-list-area div#f-container ul#filter-list li input[type='checkbox'] + label span.filter-on {
+              display: none; }
+            section#activity-area article#events div#filter-popup-area div#filter-list-area div#f-container ul#filter-list li input[type='checkbox'] + label span.filter-off {
+              display: inline-block; }
+            section#activity-area article#events div#filter-popup-area div#filter-list-area div#f-container ul#filter-list li input[type='checkbox']:checked + label span.filter-on {
+              display: inline-block; }
+            section#activity-area article#events div#filter-popup-area div#filter-list-area div#f-container ul#filter-list li input[type='checkbox']:checked + label span.filter-off {
+              display: none; }
+          section#activity-area article#events div#filter-popup-area div#filter-list-area div#f-container ul#filter-list li label span.filter-on, section#activity-area article#events div#filter-popup-area div#filter-list-area div#f-container ul#filter-list li label span.filter-off {
+            height: 20px;
+            width: 20px;
+            border-radius: 20px;
+            border-color: white;
+            border-width: 3px;
+            border-style: solid;
+            background-color: #fb785e;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-right: 4px;
+            margin-bottom: 5px; }
+          section#activity-area article#events div#filter-popup-area div#filter-list-area div#f-container ul#filter-list li label span.filter-off {
+            background-color: whitesmoke; }
+          section#activity-area article#events div#filter-popup-area div#filter-list-area div#f-container ul#filter-list li label * {
+            vertical-align: middle; }
+
+ul#event-list > li div.event-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 0 5px 5px 0;
+  color: #36336b;
+  border-left: 10px solid #bcd2ff;
+  margin-top: 10px; }
+  ul#event-list > li div.event-item h5.time-info {
+    color: #333333;
+    font-size: 14px; }
+  ul#event-list > li div.event-item h3 {
+    font-size: 24px;
+    font-weight: 800;
+    padding: 10px 0 5px; }
+    ul#event-list > li div.event-item h3 a {
+      color: #6190f5; }
+  ul#event-list > li div.event-item h5.event-type {
+    text-transform: uppercase;
+    letter-spacing: 0.5pt;
+    color: gray;
+    font-size: 12px;
+    margin-bottom: 20px; }
+  ul#event-list > li div.event-item a.rsvp-link {
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: #91b2f8;
+    color: white;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.4pt;
+    margin-top: 10px;
+    display: inline-block;
+    transition: background-color 0.4s, color 0.4s; }
+    ul#event-list > li div.event-item a.rsvp-link:hover {
+      text-decoration: none;
+      background-color: #bcd2ff;
+      color: #6190f5; }
+
+div.popup-list-container ul.popup-list li div.event-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 0 5px 5px 0;
+  color: #36336b;
+  border-left: 10px solid #bcd2ff;
+  margin-top: 10px; }
+  div.popup-list-container ul.popup-list li div.event-item h5.time-info {
+    color: #333333;
+    font-size: 14px; }
+  div.popup-list-container ul.popup-list li div.event-item h3 {
+    font-size: 24px;
+    font-weight: 800;
+    padding: 10px 0 5px; }
+    div.popup-list-container ul.popup-list li div.event-item h3 a {
+      color: #6190f5; }
+  div.popup-list-container ul.popup-list li div.event-item h5.event-type {
+    text-transform: uppercase;
+    letter-spacing: 0.5pt;
+    color: gray;
+    font-size: 12px;
+    margin-bottom: 20px; }
+  div.popup-list-container ul.popup-list li div.event-item a.rsvp-link {
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: #91b2f8;
+    color: white;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.4pt;
+    margin-top: 10px;
+    display: inline-block;
+    transition: background-color 0.4s, color 0.4s; }
+    div.popup-list-container ul.popup-list li div.event-item a.rsvp-link:hover {
+      text-decoration: none;
+      background-color: #bcd2ff;
+      color: #6190f5; }
+div.popup-list-container ul.popup-list li div.event-item {
+  font-family: Muli, sans-serif;
+  padding: 0;
+  border-left: 0; }
+  div.popup-list-container ul.popup-list li div.event-item h3 {
+    font-size: 18px;
+    line-height: 22px; }
+  div.popup-list-container ul.popup-list li div.event-item h5 {
+    margin-bottom: 5px; }
+  div.popup-list-container ul.popup-list li div.event-item p {
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 5px; }
+
+footer div#footer-area {
+  padding-top: 20px; }
+  footer div#footer-area sub {
+    margin-bottom: 20px;
+    display: block; }
+
+/*# sourceMappingURL=styles.css.map */

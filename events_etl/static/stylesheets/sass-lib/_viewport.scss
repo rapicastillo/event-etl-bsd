@@ -1,0 +1,37 @@
+body, html {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Muli', sans-serif;
+}
+
+section#viewport {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  section#header {
+    height: 100px;
+  }
+
+  section#activity-area {
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    flex-direction: row-reverse;
+
+    article#map {
+      flex-grow: 1;
+      height: 100%;
+
+      div#map-container {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    article#events {
+      width: 430px;
+    }
+  }
+}
