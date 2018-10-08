@@ -15,6 +15,7 @@ whitenoise = "==3.3.0"
 redis = "==2.10.5"
 APScheduler = "==3.3.1"
 Django = "==1.11a1"
+gunicorn = "*"
 
 [requires]
 python_version = "3.6"
