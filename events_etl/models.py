@@ -16,3 +16,4 @@ class Event(models.Model):
     start_time=models.TimeField(null=True)
     start_datetime=models.DateTimeField(null=True)
     timezone=models.CharField(max_length=50,blank=True,null=True)
+    visible=models.BooleanField(default=False)

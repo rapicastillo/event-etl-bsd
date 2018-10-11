@@ -11,6 +11,7 @@ import django
 
 django.setup()
 
+from django.db.models import Q
 from events_etl.models import Event
 
 def run():
@@ -23,6 +24,11 @@ def run():
 
     exported_data = events_data #+ hq_data
     print(json.dumps(exported_data))
+
+    # Set visible to false
+    Event.objects.filter(~Q(visible=False)).update(visible=False)
+
+    # Create items
     for item in exported_data:
 
         event, created = Event.objects.get_or_create(bsd_id=item['id'])
@@ -41,5 +47,9 @@ def run():
             event.start_datetime = parse(item['start_time'])
             event.start_day = parse(item['event_date'])
             event.start_time = parse(item['event_time'])
+            event.visible = True
+            event.save()
+        else:
+            event.visible = True
             event.save()
     # export.Exporter.s3_export(exported_data, name)
