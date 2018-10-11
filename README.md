@@ -25,7 +25,7 @@ $ git push heroku master
 | `BSD_ENDPOINT` | URL for the BSD search endpoint. Usually ends with `/page/event/search_results` |
 | `REMOTE_FILENAME` | Name of the file to be taken. |
 | `SUPERGROUP_NAME` | This is the name of the campaign. It's included in the json as `supergroup` |
-| DISABLE_COLLECTSTATIC | Set this to **1** . This is for when we activate redis |
+| `DISABLE_COLLECTSTATIC` | Set this to **1** . This is for when we activate redis |
 
 ### 3. Setup Python RQ
 
@@ -44,8 +44,17 @@ heroku scale clock=1
 You should be all set! You can monitor logs via:
 
 ```
-heroku logs --tail
+$ heroku logs --tail
 ```
+
+### 5. (Optional) Test it!
+
+```
+$ heroku run python test.py
+```
+
+This should output the following:
+
 
 # File outputs
 
